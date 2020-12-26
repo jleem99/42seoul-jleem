@@ -6,8 +6,13 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:08:55 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/27 00:08:56 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/27 00:54:11 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_bzero(void *b, size_t n)
+{
+	ft_memset(b, 0, n);
+}
