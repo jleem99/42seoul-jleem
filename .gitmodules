@@ -4,3 +4,6 @@
 [submodule "report-wiki"]
 	path = report-wiki
 	url = gits@git.innovationacademy.kr:jleem/report.wiki.git
+[submodule "projects/Libft/libft-war-machine"]
+	path = projects/Libft/libft-war-machine
+	url = https://github.com/ska42/libft-war-machine.git
