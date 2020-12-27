@@ -7,3 +7,6 @@
 [submodule "projects/Libft/libft-war-machine"]
 	path = projects/Libft/libft-war-machine
 	url = https://github.com/ska42/libft-war-machine.git
+[submodule "projects/Libft/libft-unit-test"]
+	path = projects/Libft/libft-unit-test
+	url = https://github.com/alelievr/libft-unit-test.git
