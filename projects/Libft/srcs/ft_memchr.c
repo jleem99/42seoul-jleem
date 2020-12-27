@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
+/*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/27 00:09:09 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/27 16:06:17 by jleem            ###   ########.fr       */
+/*   Created: 2020/12/27 00:09:06 by jleem             #+#    #+#             */
+/*   Updated: 2020/12/28 04:07:52 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, void const *src, size_t n)
+void	*ft_memchr(void const *b, int c, size_t n)
 {
 	size_t i;
 
 	i = -1;
 	while (++i < n)
-		((char *)dest)[i] = ((char *)src)[i];
-	return (dest);
+		if (((unsigned char *)b)[i] == (unsigned char)c)
+			return ((char *)b + i);
+	return (0);
 }

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
+/*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/27 00:09:06 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/27 16:06:17 by jleem            ###   ########.fr       */
+/*   Created: 2020/12/27 00:09:07 by jleem             #+#    #+#             */
+/*   Updated: 2020/12/28 03:59:23 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(void const *b, int c, size_t n)
+int		ft_memcmp(void const *b1, void const *b2, size_t n)
 {
-	size_t i;
+	size_t	i;
 
-	i = -1;
-	while (++i < n)
-		if (((unsigned char *)b)[i] == (unsigned char)c)
-			return ((char *)b + i);
-	return (0);
+	if (b1 == b2 || n == 0)
+		return (0);
+	i = 0;
+	while (i < n - 1 && ((unsigned char *)b1)[i] == ((unsigned char *)b2)[i])
+		i++;
+	return (((unsigned char *)b1)[i] - ((unsigned char *)b2)[i]);
 }
