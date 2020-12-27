@@ -6,7 +6,7 @@
 #    By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/24 21:00:24 by jleem             #+#    #+#              #
-#    Updated: 2020/12/27 00:29:07 by jleem            ###   ########.fr        #
+#    Updated: 2020/12/27 15:47:27 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,7 @@ clean		:
 
 fclean		: clean
 	rm -f $(NAME)
-
-.PHONY		: clean fclean
+	rm -f $(NAME:.a=.so)
 
 re			: fclean all
 
@@ -52,3 +51,9 @@ bonus_		: $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
 	ar -crs $(NAME) $^
 
 bonus		: fclean bonus_
+
+.PHONY		: all clean fclean re bonus_ bonus
+
+so:
+	$(CC) -fPIC $(CFLAGS) -c $(SRCS_P1) $(SRCS_P2) $(SRCS_BONUS)
+	gcc -shared -o libft.so $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)

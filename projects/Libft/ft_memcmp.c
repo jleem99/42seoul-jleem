@@ -6,8 +6,20 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:09:07 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/27 00:09:07 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/27 16:06:17 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int		ft_memcmp(void const *b1, void const *b2, size_t n)
+{
+	size_t	i;
+
+	if (n == 0)
+		return (0);
+	i = 0;
+	while (i < n - 1 && ((unsigned char *)b1)[i] == ((unsigned char *)b2)[i])
+		i++;
+	return (((unsigned char *)b1)[i] - ((unsigned char *)b2)[i]);
+}
