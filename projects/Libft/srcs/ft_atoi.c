@@ -6,16 +6,26 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:08:54 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/28 21:04:50 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/28 21:48:28 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(char const *str)
+static int	ft_isspace(int c)
 {
-	int num;
-	int sig;
+	return (c == '\t' ||
+			c == '\n' ||
+			c == '\v' ||
+			c == '\f' ||
+			c == '\r' ||
+			c == ' ');
+}
+
+int			ft_atoi(char const *str)
+{
+	int		num;
+	int		sig;
 
 	num = 0;
 	while (ft_isspace(*str))

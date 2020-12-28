@@ -6,7 +6,7 @@
 #    By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/24 21:00:24 by jleem             #+#    #+#              #
-#    Updated: 2020/12/28 21:06:11 by jleem            ###   ########.fr        #
+#    Updated: 2020/12/28 21:47:55 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,17 +21,14 @@ SRCDIR		= srcs/
 SRCS_P1_	= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c ft_memcmp.c ft_strlen.c ft_strlcpy.c ft_strlcat.c ft_strchr.c ft_strrchr.c ft_strnstr.c ft_strncmp.c ft_atoi.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c ft_tolower.c ft_calloc.c ft_strdup.c
 SRCS_P2_	= ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 SRCS_BONUS_	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c
-SRCS_CUSTOM_= ft_islower_bonus.c ft_isupper_bonus.c ft_isspace_bonus.c
 
 SRCS_P1		= $(addprefix $(SRCDIR), $(SRCS_P1_))
 SRCS_P2		= $(addprefix $(SRCDIR), $(SRCS_P2_))
 SRCS_BONUS	= $(addprefix $(SRCDIR), $(SRCS_BONUS_))
-SRCS_CUSTOM	= $(addprefix $(SRCDIR), $(SRCS_CUSTOM_))
 
 OBJS_P1		= $(SRCS_P1:.c=.o)
 OBJS_P2		= $(SRCS_P2:.c=.o)
 OBJS_BONUS	= $(SRCS_BONUS:.c=.o)
-OBJS_CUSTOM	= $(SRCS_CUSTOM:.c=.o)
 
 all			: $(NAME)
 
@@ -42,21 +39,21 @@ $(NAME)		: $(OBJS_P1) $(OBJS_P2)
 	$(CC) $(CFLAGS) -c $^ -o $@ -I$(INCDIR)
 
 clean		:
-	rm -f $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS) $(OBJS_CUSTOM)
+	rm -f $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
 
 fclean		: clean
-	rm -f $(NAME)
-	rm -f $(NAME:.a=.so)
+	# rm -f $(NAME)
+	# rm -f $(NAME:.a=.so)
 
 re			: fclean all
 
-bonus_		: $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS) $(OBJS_CUSTOM)
-	ar -crs $(NAME) $^
+bonus_		: $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
+	ar crs $(NAME) $^
 
 bonus		: fclean bonus_
 
 .PHONY		: all clean fclean re bonus_ bonus
 
 so			: CFLAGS += -fPIC
-so			: $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS) $(SRCS_CUSTOM)
-	$(CC) -shared -o libft.so $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS) $(OBJS_CUSTOM)
+so			: $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
+	$(CC) -shared -o libft.so $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
