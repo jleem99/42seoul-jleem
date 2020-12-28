@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 19:49:02 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/28 04:16:18 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/28 21:04:32 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+/*
+** Libc Functions
+*/
 void				*ft_memset(void *dest, int c, size_t n);
 void				ft_bzero(void *b, size_t n);
 void				*ft_memcpy(void *dest, void const *src, size_t n);
@@ -50,6 +53,9 @@ int					ft_tolower(int c);
 void				*ft_calloc(size_t nmemb, size_t size);
 char				*ft_strdup(char const *str);
 
+/*
+** Additional Functions
+*/
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
@@ -61,6 +67,9 @@ void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 
+/*
+** Bonus Functions
+*/
 t_list				*ft_lstnew(void *content);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 int					ft_lstsize(t_list *lst);
@@ -72,5 +81,12 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst,
 								void *(*f)(void *),
 								void (*del)(void *));
+
+/*
+** My Custom Functions
+*/
+int					ft_islower(int c);
+int					ft_isupper(int c);
+int					ft_isspace(int c);
 
 #endif
