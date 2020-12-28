@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:09:18 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/29 03:04:58 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/29 07:06:44 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	ft_strlen_chr(char const *s, char c)
 	size_t	i;
 
 	i = 0;
-	while (s[i] != c || !s[i])
+	while (s[i] != c && s[i])
 		i++;
 	return (i);
 }
