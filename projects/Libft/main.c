@@ -1,11 +1,14 @@
 #include "includes/libft.h"
+#include <stdio.h>
+#include <string.h>
 
 int main(void)
 {
-	char	n[40] = "23452435232345346752345";
-	int	i1 = atoi(n);
-	int	i2 = ft_atoi(n);
+	char	*str = "01234";
+	size_t	size = 10;
 
-	printf("%d\n%d\n", i1, i2);
+	char	*ret = ft_substr(str, 10, size);
+	printf("%s|", ret);
+
 	return (0);
 }

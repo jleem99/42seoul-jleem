@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 19:49:02 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/28 21:29:28 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/28 21:49:04 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,5 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst,
 								void *(*f)(void *),
 								void (*del)(void *));
-
-/*
-** My Custom Functions
-*/
-int					ft_islower(int c);
-int					ft_isupper(int c);
-int					ft_isspace(int c);
 
 #endif

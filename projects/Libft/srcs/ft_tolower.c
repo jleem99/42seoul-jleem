@@ -6,13 +6,18 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:08:41 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/28 21:16:00 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/28 21:49:40 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+static int	ft_isupper(int c)
+{
+	return ('A' <= c && c <= 'Z');
+}
+
+int			ft_tolower(int c)
 {
 	if (ft_isupper(c))
 		return (c + 'a' - 'A');

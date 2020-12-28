@@ -6,7 +6,7 @@
 #    By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/24 21:00:24 by jleem             #+#    #+#              #
-#    Updated: 2020/12/28 21:47:55 by jleem            ###   ########.fr        #
+#    Updated: 2020/12/28 23:30:22 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,10 +50,13 @@ re			: fclean all
 bonus_		: $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
 	ar crs $(NAME) $^
 
-bonus		: fclean bonus_
+bonus		: fclean bonus_ # ??? should i fclean?
 
 .PHONY		: all clean fclean re bonus_ bonus
 
 so			: CFLAGS += -fPIC
 so			: $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
 	$(CC) -shared -o libft.so $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
+debug		: CFLAGS = -Wall -Wextra -g
+debug		: bonus
+	gcc $(CFLAGS) main.c libft.a
