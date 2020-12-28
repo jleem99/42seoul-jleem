@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:09:10 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/28 04:09:43 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/29 05:34:39 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	*ft_memmove(void *dest, void const *src, size_t n)
 	}
 	else
 	{
-		memcpy(dest, src, n);
+		ft_memcpy(dest, src, n);
 	}
 	return (dest);
 }
