@@ -4,11 +4,13 @@
 
 int main(void)
 {
-	char	*str = "01234";
-	size_t	size = 10;
-
-	char	*ret = ft_substr(str, 10, size);
-	printf("%s|", ret);
+	char	**ret = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
+	
+	while (*ret)
+	{
+		printf("%s|", *ret);
+		ret++;
+	}
 
 	return (0);
 }
