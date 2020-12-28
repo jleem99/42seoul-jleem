@@ -6,7 +6,7 @@
 #    By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/24 21:00:24 by jleem             #+#    #+#              #
-#    Updated: 2020/12/28 04:10:27 by jleem            ###   ########.fr        #
+#    Updated: 2020/12/28 20:12:17 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,8 @@ clean		:
 	rm -f $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
 
 fclean		: clean
-	rm -f $(NAME)
-	rm -f $(NAME:.a=.so)
+	# rm -f $(NAME)
+	# rm -f $(NAME:.a=.so)
 
 re			: fclean all
 

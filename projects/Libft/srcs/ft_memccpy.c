@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
+/*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:09:05 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/27 16:06:17 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/28 20:14:05 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_memccpy(void *dest, void const *src, int c, size_t n)
 {
 	size_t	i;
 
+	if (dest == src)
+		return (0);
 	i = 0;
 	while (i < n)
 	{
