@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:09:09 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/29 12:40:21 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/30 01:57:06 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memcpy(void *dest, void const *src, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	if (dest == src)
 		return (dest);

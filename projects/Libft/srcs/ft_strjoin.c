@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:09:19 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/29 12:48:56 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/30 01:57:57 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t const	size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	size_t	const	size = ft_strlen(s1) + ft_strlen(s2) + 1;
 	char			*ret;
 
 	if (!(ret = malloc(size)))

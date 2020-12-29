@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:09:31 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/29 12:47:21 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/30 02:04:22 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t const	slen = ft_strlen(s);
+	size_t	const	slen = ft_strlen(s);
 	size_t			copylen;
 	char			*ret;
 
