@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: jleem <jleem@students.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/24 21:00:24 by jleem             #+#    #+#              #
 #    Updated: 2020/12/28 23:30:22 by jleem            ###   ########.fr        #
