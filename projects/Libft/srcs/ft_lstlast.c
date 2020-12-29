@@ -6,8 +6,17 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:09:03 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/29 12:42:58 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/30 02:20:39 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (!lst)
+		return (0);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}

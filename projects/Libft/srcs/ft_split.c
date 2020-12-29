@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:09:18 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/30 01:57:36 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/30 05:17:26 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char		**ft_split(char const *s, char c)
 	int		const	str_num = ft_count_strs(s, c);
 	int				str_idx;
 
-	if (!(ret = malloc(sizeof(char *) * (str_num + 1))))
+	if (!(ret = malloc(sizeof(*ret) * (str_num + 1))))
 		return ((char **)0);
 	str_idx = 0;
 	while (str_idx < str_num)

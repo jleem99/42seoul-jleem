@@ -3,42 +3,58 @@
 #include <stdlib.h>
 #include <string.h>
 
-size_t
-strlcat(char * restrict dst, const char * restrict src, size_t maxlen) {
-    const size_t srclen = strlen(src);
-    const size_t dstlen = strnlen(dst, maxlen);
-    if (dstlen == maxlen) return maxlen+srclen;
-    if (srclen < maxlen-dstlen) {
-        memcpy(dst+dstlen, src, srclen+1);
-    } else {
-        memcpy(dst+dstlen, src, maxlen-1);
-        dst[dstlen+maxlen-1] = '\0';
-    }
-    return dstlen + srclen;
+void	ft_del(void *content)
+{
+	free(content);
 }
 
-
-int main(void)
+void	ft_print_result(t_list * elem)
 {
-	char *d1 = (char *)malloc(sizeof(*d1) * 15);
-	char *d2 = (char *)malloc(sizeof(*d2) * 15);
-	memset(d1, 0, 15);
-	memset(d1, 'r', 6);
-	memset(d2, 0, 15);
-	memset(d2, 'r', 6);
-	d1[10] = 'a';
-	d2[10] = 'a';
+	printf("%s|\n", (char *)(elem->content));
+}
 
-	int r1, r2;
+int main(int argc, const char *argv[])
+{
+	t_list		*elem;
+	t_list		*elem2;
+	t_list		*elem3;
+	t_list		*elem4;
+	char		*str = ft_strdup("lorem");
+	char		*str2 = ft_strdup( "ipsum");
+	char		*str3 = ft_strdup( "dolor");
+	char		*str4 = ft_strdup( "sit");
 
-	printf("|%s|%s|\n", d1, d2);
+	elem = ft_lstnew(str);
+	elem2 = ft_lstnew(str2);
+	elem3 = ft_lstnew(str3);
+	elem4 = ft_lstnew(str4);
+	// alarm(5);
+	if (!elem || !elem2 || !elem3 || !elem4)
+		return (0);
+	elem->next = elem2;
+	elem2->next = elem3;
+	elem3->next = elem4;
 
-	r1 = ft_strlcat(d1, "lorem ipsum dolor sit amet", 6);
-	r2 = strlcat(d2, "lorem ipsum dolor sit amet", 6);
-
-	printf("|%d|%d|\n", r1, r2);
-
-	printf("|%s|%s|\n", d1, d2);
+	ft_lstdelone(elem3, &ft_del);
+	if (elem)
+		ft_print_result(elem);
+	else
+		write(1, "NULL\n", 5);
+	write(1, "\n", 1);
+	if (elem2)
+		ft_print_result(elem2);
+	else
+		write(1, "NULL\n", 5);
+	write(1, "\n", 1);
+	// if (elem3)
+	// 	ft_print_result(elem3);
+	// else
+		write(1, "NULL\n", 5);
+	write(1, "\n", 1);
+	if (elem4)
+		ft_print_result(elem4);
+	else
+		write(1, "NULL\n", 5);
 
 	return (0);
 }

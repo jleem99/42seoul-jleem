@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/27 00:09:03 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/30 02:06:39 by jleem            ###   ########.fr       */
+/*   Created: 2020/12/30 02:11:19 by jleem             #+#    #+#             */
+/*   Updated: 2020/12/30 05:38:55 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*const	ret = malloc(sizeof(*ret));
+	t_list	*ret;
+	t_list	*newlst;
 
-	if (!ret)
+	if (!lst || !f)
 		return (0);
-	ret->content = content;
-	ret->next = 0;
+	ret = 0;
+	while (lst)
+	{
+		newlst = ft_lstnew(f(lst->content));
+		if (!newlst)
+		{
+			ft_lstclear(&ret, del);
+			return (0);
+		}
+		ft_lstadd_back(&ret, newlst);
+		lst = lst->next;
+	}
 	return (ret);
 }

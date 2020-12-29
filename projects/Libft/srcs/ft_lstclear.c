@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/27 00:09:03 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/30 02:06:39 by jleem            ###   ########.fr       */
+/*   Created: 2020/12/30 02:10:54 by jleem             #+#    #+#             */
+/*   Updated: 2020/12/30 03:27:52 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*const	ret = malloc(sizeof(*ret));
+	t_list	*lst_cur;
+	t_list	*lst_tmp;
 
-	if (!ret)
-		return (0);
-	ret->content = content;
-	ret->next = 0;
-	return (ret);
+	lst_cur = *lst;
+	while (lst_cur)
+	{
+		lst_tmp = lst_cur;
+		lst_cur = lst_cur->next;
+		ft_lstdelone(lst_tmp, del);
+	}
+	*lst = 0;
 }
