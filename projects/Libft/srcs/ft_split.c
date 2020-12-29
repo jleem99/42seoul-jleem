@@ -6,12 +6,11 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:09:18 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/29 12:40:21 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/29 12:44:03 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 static int	ft_strlen_chr(char const *s, char c)
 {

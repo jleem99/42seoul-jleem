@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:13:16 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/29 12:40:21 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/29 12:44:43 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strdup(char const *str)
 {
-	size_t	size = ft_strlen(str) + 1;
-	char	*copy = malloc(size);
+	size_t const	size = ft_strlen(str) + 1;
+	char *const		copy = malloc(size);
 
 	if (!copy)
 		return (0);
