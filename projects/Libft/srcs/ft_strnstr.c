@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:09:28 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/30 02:04:14 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/31 04:37:40 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@ char	*ft_strnstr(char const *big, char const *little, size_t len)
 
 	if (little_len == 0)
 		return ((char *)big);
+	if (len == 0)
+		return (0);
 	i = 0;
+	while (big[i] != *little)
+		if (big[i++] == '\0')
+			return (0);
 	while (i + little_len <= len && big[i])
 	{
 		if (ft_strncmp(big + i, little, little_len) == 0)
