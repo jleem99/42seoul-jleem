@@ -6,7 +6,7 @@
 #    By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/24 21:00:24 by jleem             #+#    #+#              #
-#    Updated: 2020/12/30 22:26:46 by jleem            ###   ########.fr        #
+#    Updated: 2020/12/30 23:23:15 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,6 @@ $(NAME)		: $(OBJS_P1) $(OBJS_P2)
 
 %.o			: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@ -I$(INCDIR)
-
 
 clean		:
 	$(RM) $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
