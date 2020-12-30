@@ -6,15 +6,12 @@
 #    By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/24 21:00:24 by jleem             #+#    #+#              #
-#    Updated: 2020/12/30 22:39:30 by jleem            ###   ########.fr        #
+#    Updated: 2020/12/30 05:08:55 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
-
-AR			= ar -rcs
-RM			= rm -f
 
 NAME		= libft.a
 
@@ -36,21 +33,29 @@ OBJS_BONUS	= $(SRCS_BONUS:.c=.o)
 all			: $(NAME)
 
 $(NAME)		: $(OBJS_P1) $(OBJS_P2)
-	$(AR) $@ $^
+	ar -crs $@ $^
 
 %.o			: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@ -I$(INCDIR)
 
-
 clean		:
-	$(RM) $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
+	rm -f $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
 
 fclean		: clean
-	$(RM) $(NAME)
-
-bonus		: $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
-	$(AR) $(NAME) $^
+	# rm -f $(NAME)
 
 re			: fclean all
 
-.PHONY		: all clean fclean re bonus
+bonus_		: $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
+	ar crs $(NAME) $^
+
+bonus		: fclean bonus_ # ??? should i fclean?
+
+.PHONY		: all clean fclean re bonus_ bonus
+
+so			: CFLAGS += -fPIC
+so			: $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
+	$(CC) -shared -o libft.so $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
+debug		: CFLAGS = -Wall -Wextra -g
+debug		: bonus
+	gcc $(CFLAGS) main.c libft.a
