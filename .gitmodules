@@ -10,3 +10,6 @@
 [submodule "projects/Libft/libft-unit-test"]
 	path = projects/Libft/libft-unit-test
 	url = https://github.com/alelievr/libft-unit-test.git
+[submodule "projects/Libft/Libftest"]
+	path = projects/Libft/Libftest
+	url = https://github.com/jtoty/Libftest.git
