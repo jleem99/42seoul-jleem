@@ -6,7 +6,7 @@
 #    By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/24 21:00:24 by jleem             #+#    #+#              #
-#    Updated: 2020/12/30 23:23:15 by jleem            ###   ########.fr        #
+#    Updated: 2020/12/31 04:55:09 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,12 @@ SRCS_BONUS_	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_
 SRCS_P1		= $(addprefix $(SRCDIR), $(SRCS_P1_))
 SRCS_P2		= $(addprefix $(SRCDIR), $(SRCS_P2_))
 SRCS_BONUS	= $(addprefix $(SRCDIR), $(SRCS_BONUS_))
+SRCS_ALL	= $(SRCS_P1) $(SRCS_P2) $(SRCS_BONUS)
 
 OBJS_P1		= $(SRCS_P1:.c=.o)
 OBJS_P2		= $(SRCS_P2:.c=.o)
 OBJS_BONUS	= $(SRCS_BONUS:.c=.o)
+OBJS_ALL	= $(SRCS_ALL:.c=.o)
 
 all			: $(NAME)
 
@@ -42,12 +44,12 @@ $(NAME)		: $(OBJS_P1) $(OBJS_P2)
 	$(CC) $(CFLAGS) -c $^ -o $@ -I$(INCDIR)
 
 clean		:
-	$(RM) $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
+	$(RM) $(OBJS_ALL)
 
 fclean		: clean
 	$(RM) $(NAME)
 
-bonus		: $(OBJS_P1) $(OBJS_P2) $(OBJS_BONUS)
+bonus		: $(OBJS_ALL)
 	$(AR) $(NAME) $^
 
 re			: fclean all
