@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 09:49:44 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/01 08:38:04 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/01 08:55:15 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			get_next_line(int fd, char **line)
 	char				*buf;
 	ssize_t				retcode;
 
-	if (!(0 <= fd && fd < OPEN_MAX))
+	if (!line || !(0 <= fd && fd < OPEN_MAX))
 		return (-1);
 	if (linestacks[fd].lines > 0)
 		return (get_next_line_from_linestack(&linestacks[fd], line));
