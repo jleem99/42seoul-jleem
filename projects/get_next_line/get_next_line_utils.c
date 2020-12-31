@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 09:49:41 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/01 05:09:57 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/01 06:58:52 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,12 @@ char			*ft_linestack_pop(t_linestack *linestack)
 	size_t	len;
 
 	len = 0;
-	while (linestack->str[len] != '\n' && len < linestack->strlen)
+	while (len < linestack->strlen && linestack->str[len] != '\n')
 		len++;
 	if (!(pop_str = ft_substr(linestack->str, 0, len, 1)))
 		return (NULL);
 	linestack->strlen -= len;
-	if (linestack->lines != 0)
+	if (linestack->strlen != 0)
 	{
 		linestack->lines--;
 		linestack->strlen--;
@@ -85,7 +85,10 @@ char			*ft_linestack_pop(t_linestack *linestack)
 	if (linestack->strlen == 0)
 		new_str = 0;
 	else if (!(new_str = ft_substr(linestack->str, len + 1, linestack->strlen, 0)))
+	{
+		free(pop_str);
 		return (NULL);
+	}
 	free(linestack->str);
 	linestack->str = new_str;
 	return (pop_str);
