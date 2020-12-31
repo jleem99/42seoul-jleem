@@ -6,11 +6,12 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 09:49:47 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/31 13:33:33 by jleem            ###   ########.fr       */
+/*   Updated: 2020/12/31 14:36:27 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_UTILS_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 # include <unistd.h>
 # include <stdlib.h>
 
@@ -18,20 +19,19 @@
 #  define BUFFER_SIZE 5
 # endif
 
-typedef struct	s_line
+typedef struct	s_linestack
 {
-	char	*buf;
-	size_t	size;
-	int		retcode;
-	char	*remainder;
-	size_t	remaindersize;
-}				t_line;
+	char	*str;
+	size_t	strlen;
+	size_t	lines;
+}				t_linestack;
 
 int				get_next_line(int fd, char **line);
 
 void			*ft_memcpy(void *dest, void const *src, size_t n);
-int				ft_has_newline(char *buf, size_t size);
-int				ft_append_line(t_line *line, char *buf, size_t appendsize);
-int				ft_terminate_line(t_line *line, char *buf);
+size_t			ft_count_lines(char *const buf, size_t size);
+void			ft_free_linestack(t_linestack *linestack);
+char			*ft_linestack_pop(t_linestack *linestack);
+int				ft_parse_read(t_linestack *linestack, char *const buf, size_t bytesread);
 
 #endif
