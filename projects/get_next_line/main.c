@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 10:50:32 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/31 16:30:50 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/01 04:21:27 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,36 +18,22 @@ int		main(void)
 {
 	char		*str;
 	int	const	fd = open("test.txt", O_RDONLY);
+	int			retcode;
 
-	str = 0;
-	get_next_line(fd, &str);
-	printf("|%s|\n", str);
-	free(str);
-	printf("\n\n");
-	get_next_line(fd, &str);
-	printf("|%s|\n", str);
-	free(str);
-	printf("\n\n");
-	get_next_line(fd, &str);
-	printf("|%s|\n", str);
-	free(str);
-	printf("\n\n");
-	get_next_line(fd, &str);
-	printf("|%s|\n", str);
-	free(str);
-	printf("\n\n");
-	get_next_line(fd, &str);
-	printf("|%s|\n", str);
-	free(str);
-	printf("\n\n");
-	get_next_line(fd, &str);
-	printf("|%s|\n", str);
-	free(str);
-	printf("\n\n");
-	get_next_line(fd, &str);
-	printf("|%s|\n", str);
-	free(str);
-	// free(str);
-
+	str = "hello";
+	retcode = 1;
+	while (retcode == 1)
+	{
+		retcode = get_next_line(fd, &str);
+		if (retcode == 1)
+		{
+			printf("|%d|%s|\n", retcode, str);
+			free(str);
+			printf("\n");
+		}
+	}
+		retcode = get_next_line(fd, &str);
+		printf("|%d|\n", retcode);
+		
 	return(0);
 }
