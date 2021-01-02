@@ -13,3 +13,6 @@
 [submodule "projects/Libft/Libftest"]
 	path = projects/Libft/Libftest
 	url = https://github.com/jtoty/Libftest.git
+[submodule "42seoul-docs"]
+	path = 42seoul-docs
+	url = git@github.com:kch79624/42seoul-docs.git
