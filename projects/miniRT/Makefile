@@ -1,23 +1,33 @@
-CC				= clang
-CFLAGS			= -Wall -Wextra -Werror
+CC				= gcc
+CFLAGS			= -Wall -Wextra -Werror -I$(INCDIR) $(LIBFTFLAGS)
+LIBFTFLAGS		= -I$(LIBFTDIR)includes -L$(LIBFTDIR) -lft
+MLXFLAGS		= -lbsd -lmlx -lXext -lX11 
 MAKE			= make
 
 NAME			= miniRT
-SRCS			= main.c
+SRCDIR			= srcs/
+INCDIR			= includes/
+
+SRCS_			= main.c
+SRCS			= $(addprefix $(SRCDIR), $(SRCS_))
 OBJS			= $(SRCS:.c=.o)
 
-LIBFT			= libft.a
+LIBFT			= $(addprefix $(LIBFTDIR), libft.a)
 LIBFTDIR		= ../Libft/
 
+# Rules
 all				: $(NAME)
 
 $(NAME)			: $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(addprefix $(LIBFTDIR), $(LIBFT)) -lbsd -lmlx -lXext -lX11 -o $@
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLXFLAGS) -o $@
 
 $(LIBFT)		:
 	make -C $(LIBFTDIR) bonus
 
+%.o				: %.c
+	$(CC) $(CFLAGS) -c $^ -o $@
 
+# Clean
 clean			:
 	rm -f $(OBJS)
 
@@ -26,10 +36,8 @@ fclean			: clean
 
 re				: fclean all
 
-
-
-# Tests
-test			: CFLAGS = -Wall -Wextra
+# Test
+test			: CFLAGS = -Wall -Wextra -I$(INCDIR) $(LIBFTFLAGS)
 test			: all
 	./$(NAME)
 

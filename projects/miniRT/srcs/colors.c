@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/03 19:53:51 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/03 20:11:49 by jleem            ###   ########.fr       */
+/*   Created: 2021/01/03 21:39:10 by jleem             #+#    #+#             */
+/*   Updated: 2021/01/03 21:41:30 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-
-int		main(void)
+int		color_rgba(int r, int g, int b, int a)
 {
-	void	*mlx;
-	void	*mlx_win;
+	return (a << 24 | r << 16 | g << 8 | b);
+}
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello World!");
-	mlx_loop(mlx);
+int		color_a(int rgba)
+{
+	return (rgba & (0xFF << 24));
+}
 
-	return (0);
+int		color_r(int rgba)
+{
+	return (rgba & (0xFF << 16));
+}
+
+int		color_g(int rgba)
+{
+	return (rgba & (0xFF << 8));
+}
+
+int		color_b(int rgba)
+{
+	return (rgba & 0xFF);
 }
