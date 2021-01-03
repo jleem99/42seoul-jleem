@@ -16,3 +16,6 @@
 [submodule "42seoul-docs"]
 	path = 42seoul-docs
 	url = git@github.com:kch79624/42seoul-docs.git
+[submodule "projects/miniRT/minilibx-linux"]
+	path = projects/miniRT/minilibx-linux
+	url = https://github.com/42Paris/minilibx-linux.git
