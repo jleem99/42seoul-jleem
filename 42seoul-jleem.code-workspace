@@ -9,7 +9,21 @@
 	],
 	"settings": {
 		"files.associations": {
-			"random": "c"
+			"random": "c",
+			"atomic": "cpp",
+			"*.tcc": "cpp",
+			"functional": "cpp",
+			"optional": "cpp",
+			"fstream": "cpp",
+			"istream": "cpp",
+			"numeric": "cpp",
+			"ostream": "cpp",
+			"sstream": "cpp",
+			"stdexcept": "cpp",
+			"streambuf": "cpp",
+			"type_traits": "cpp",
+			"typeinfo": "cpp",
+			"utility": "cpp"
 		}
 	}
 }

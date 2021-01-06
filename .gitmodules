@@ -22,3 +22,6 @@
 [submodule "projects/miniRT/c-raytracer"]
 	path = projects/miniRT/c-raytracer
 	url = git@github.com:kch79624/c-raytracer.git
+[submodule "projects/miniRT/raytracing_in_one_weekend"]
+	path = projects/miniRT/raytracing_in_one_weekend
+	url = git@github.com:kch79624/raytracing_in_one_weekend.git
