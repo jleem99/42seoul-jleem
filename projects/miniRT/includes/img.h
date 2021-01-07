@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 14:37:53 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/07 00:50:07 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/08 06:57:02 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct	s_img {
 	int			endian;
 }				t_img;
 
-void			init_img(t_img *img);
+void			init_img(t_img *img, void *mlx, void *win);
 void			img_put_pixel(t_img *img, int x, int y, int color);
 
 #endif
