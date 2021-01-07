@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 14:39:19 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/07 07:49:29 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/07 12:48:28 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,35 +28,12 @@
 #include "camera.h"
 #include <stdio.h>
 
-void	print_circle(t_img *img, int sx, int sy, int sr, int color)
-{
-	double rad = 0;
-	double r = sr;
-	int x, y;
-
-	while (r > 0)
-	{
-		rad = 0;
-		while (rad < PI * 2)
-		{
-			x = sx + r * cos(rad);
-			y = sy + r * sin(rad);
-			img_put_pixel(img, x, y, color);
-			rad += 0.1;
-		}
-		r -= 1;
-		printf("r:%f|\n", r);
-	}
-}
-
-
 t_img	*g_img;
 
 void	f(int x, int y, int color)
 {
 	img_put_pixel(g_img, x, y, color);
 }
-
 
 void	demo(t_img *img, void *mlx, void *win)
 {
