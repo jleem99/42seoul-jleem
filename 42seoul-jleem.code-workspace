@@ -23,7 +23,11 @@
 			"streambuf": "cpp",
 			"type_traits": "cpp",
 			"typeinfo": "cpp",
-			"utility": "cpp"
+			"utility": "cpp",
+			"algorithm": "cpp",
+			"memory": "cpp",
+			"initializer_list": "cpp",
+			"array": "cpp"
 		}
 	}
 }

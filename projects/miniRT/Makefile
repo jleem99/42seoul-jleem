@@ -6,7 +6,7 @@
 #    By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/06 14:15:34 by jleem             #+#    #+#              #
-#    Updated: 2021/01/07 15:38:44 by jleem            ###   ########.fr        #
+#    Updated: 2021/01/08 15:00:51 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ NAME			= miniRT
 SRCDIR			= srcs/
 INCDIR			= includes/
 
-SRCS			= $(wildcard $(SRCDIR)*.c)
+SRCS			= $(wildcard $(SRCDIR)*.c)  # explicit (submodules)
 OBJS			= $(SRCS:.c=.o)
 
 LIBFT			= $(addprefix $(LIBFTDIR), libft.a)
@@ -32,8 +32,8 @@ RAYTRACERDIR	= c-raytracer/
 # Rules
 all				: $(NAME)
 
-$(NAME)			: $(LIBFT) $(RAYTRACER) $(OBJS)
-	$(CC) $(OBJS) $(LIBFT) $(RAYTRACER) $(MLXFLAGS) -o $@ $(CFLAGS) $(MLX_FLAGS) -lm
+$(NAME)			: $(OBJS) $(RAYTRACER) $(LIBFT)
+	$(CC) $^ $(MLXFLAGS) -o $@ $(CFLAGS) $(MLX_FLAGS) -lm
 
 $(LIBFT)		:
 	make -C $(LIBFTDIR) bonus
@@ -55,9 +55,10 @@ re				: fclean all
 
 # Test
 test			: ERROR_FLAGS = -Wall -Wextra
-# test			: CFLAGS += -g
-test			: CFLAGS += -g -fsanitize=address
+test			: CFLAGS += -O2
+# test			: CFLAGS += -g3 -fsanitize=address
 test			: fclean all
+	rm -f $(RAYTRACERDIR)srcs/*.o
 	./$(NAME)
 
 .PHONY			: all clean fclean re test $(LIBFT) $(RAYTRACER)

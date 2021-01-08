@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 19:53:51 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/06 14:53:35 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/08 14:58:01 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@
 #include "img.h"
 #include "colors.h"
 
-#define	WIDTH	500
-#define	HEIGHT	500
+#define	WIDTH	1200
+#define	HEIGHT	900
 
 
 #include "demo.h"
+#include "input.h"
+
+#include <stdio.h>
 
 int		main(void)
 {
@@ -31,14 +34,19 @@ int		main(void)
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, WIDTH, HEIGHT, "Hello world!");
 
-	img.img = mlx_new_image(mlx, WIDTH, HEIGHT);
-	init_img(&img);
-	img_put_pixel(&img, 5, 5, 0x00FF0000);
+	init_img(&img, mlx, mlx_win);
+	init_input(mlx, mlx_win);
 
-	demo(&img, mlx, mlx_win);
+	t_demo	s;
+	s.img = &img;
+	s.mlx = mlx;
+	s.win = mlx_win;
 
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	mlx_loop_hook(mlx, demo, &s);
+
+	// mlx_do_sync(mlx);
 	mlx_loop(mlx);
+	// while (1);
 	return (0);
 }
 
