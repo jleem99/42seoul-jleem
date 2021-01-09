@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/06 14:15:34 by jleem             #+#    #+#              #
-#    Updated: 2021/01/08 16:00:56 by jleem            ###   ########.fr        #
+#    Updated: 2021/01/09 14:19:27 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				= gcc
 ERROR_FLAGS		= -Wall -Wextra -Werror
 MLX_FLAGS		= -lbsd -lmlx -lXext -lX11
-CFLAGS			= $(ERROR_FLAGS) -I$(INCDIR) -I$(LIBFTDIR) -I$(RAYTRACERDIR)includes
-MAKE			= make
+INC_FLAGS		= -I$(INCDIR) -I$(LIBFTDIR) -I$(RAYTRACERDIR)includes
+CFLAGS			= $(ERROR_FLAGS) $(INC_FLAGS)
 
 NAME			= miniRT
 SRCDIR			= srcs/
@@ -36,10 +36,10 @@ $(NAME)			: $(OBJS) $(RAYTRACER) $(LIBFT)
 	$(CC) $^ $(MLXFLAGS) -o $@ $(CFLAGS) $(MLX_FLAGS) -lm
 
 $(LIBFT)		:
-	make -C $(LIBFTDIR) bonus
+	$(MAKE) -C $(LIBFTDIR) bonus
 
 $(RAYTRACER)	:
-	make -C $(RAYTRACERDIR) fclean module
+	$(MAKE) -C $(RAYTRACERDIR) fclean module
 
 %.o				: %.c
 	$(CC) -c $^ -o $@ $(CFLAGS)
@@ -65,7 +65,6 @@ test			: run
 
 prof			: test
 	gprof ./$(NAME)
-
 
 .PHONY			: all clean fclean re test $(LIBFT) $(RAYTRACER) prof
 

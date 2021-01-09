@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 19:53:51 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/08 16:01:34 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/09 10:30:02 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include "img.h"
 #include "colors.h"
 
-#define	WIDTH	700
-#define	HEIGHT	500
+#define	WIDTH	800
+#define	HEIGHT	480
 
 
 #include "demo.h"

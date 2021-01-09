@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   demo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 14:39:19 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/08 15:00:36 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/09 14:11:50 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ void	demo(t_demo *s)
 	t_scene		scene;
 
 	scene = make_scene();
-	scene_push_object(&scene, &s1);
-	scene_push_object(&scene, &s2);
-	scene_push_object(&scene, &s3);
+	ft_array_push(scene.objects, &s1);
+	ft_array_push(scene.objects, &s2);
+	ft_array_push(scene.objects, &s3);
+	printf("%d\n", scene.objects->size);
 
 	/* Setup Ray */
 	t_ray		ray;
