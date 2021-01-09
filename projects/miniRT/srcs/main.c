@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 19:53:51 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/08 14:58:01 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/08 16:01:34 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include "img.h"
 #include "colors.h"
 
-#define	WIDTH	1200
-#define	HEIGHT	900
+#define	WIDTH	700
+#define	HEIGHT	500
 
 
 #include "demo.h"
@@ -42,11 +42,12 @@ int		main(void)
 	s.mlx = mlx;
 	s.win = mlx_win;
 
-	mlx_loop_hook(mlx, demo, &s);
+	// for (size_t i = 0; i < 50; i++)
+		// demo(&s);
 
-	// mlx_do_sync(mlx);
+	mlx_loop_hook(mlx, demo, &s);
 	mlx_loop(mlx);
-	// while (1);
+
 	return (0);
 }
 

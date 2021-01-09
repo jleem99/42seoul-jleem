@@ -6,7 +6,7 @@
 #    By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/06 14:15:34 by jleem             #+#    #+#              #
-#    Updated: 2021/01/08 15:00:51 by jleem            ###   ########.fr        #
+#    Updated: 2021/01/08 16:00:56 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ $(LIBFT)		:
 	make -C $(LIBFTDIR) bonus
 
 $(RAYTRACER)	:
-	make -C $(RAYTRACERDIR) module
+	make -C $(RAYTRACERDIR) fclean module
 
 %.o				: %.c
 	$(CC) -c $^ -o $@ $(CFLAGS)
@@ -53,15 +53,21 @@ fclean			: clean
 
 re				: fclean all
 
-# Test
-test			: ERROR_FLAGS = -Wall -Wextra
-test			: CFLAGS += -O2
-# test			: CFLAGS += -g3 -fsanitize=address
-test			: fclean all
+run				: re
 	rm -f $(RAYTRACERDIR)srcs/*.o
 	./$(NAME)
 
-.PHONY			: all clean fclean re test $(LIBFT) $(RAYTRACER)
+test			: ERROR_FLAGS = -Wall -Wextra
+test			: CFLAGS += -O2
+# test			: CFLAGS += -g -pg
+# test			: CFLAGS += -g3 -fsanitize=address
+test			: run
+
+prof			: test
+	gprof ./$(NAME)
+
+
+.PHONY			: all clean fclean re test $(LIBFT) $(RAYTRACER) prof
 
 # %.o: %.c
 #     $(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
