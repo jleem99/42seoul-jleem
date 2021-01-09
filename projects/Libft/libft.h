@@ -6,14 +6,13 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 19:49:02 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/29 12:40:21 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/09 12:34:56 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
 
