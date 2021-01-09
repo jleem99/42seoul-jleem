@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 13:20:24 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/09 13:20:49 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/09 14:09:20 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 void			ft_free_array(t_array *arr)
 {
 	free(arr->data);
-	arr->data = NULL;
-	arr->size = 0;
+	free(arr);
 }

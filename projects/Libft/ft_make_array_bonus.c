@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 13:16:26 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/09 13:19:51 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/09 14:07:44 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,15 @@
 
 t_array			*ft_make_array(size_t size)
 {
-	return (malloc(sizeof(t_array) * size));
+	t_array	*ret;
+
+	if (!(ret = malloc(sizeof(t_array))))
+		return (NULL);
+	if (!(ret->data = malloc(sizeof(void *) * size)))
+	{
+		free(ret);
+		return (NULL);
+	}
+	ret->size = size;
+	return (ret);
 }
