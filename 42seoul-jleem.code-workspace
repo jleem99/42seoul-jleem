@@ -27,7 +27,10 @@
 			"algorithm": "cpp",
 			"memory": "cpp",
 			"initializer_list": "cpp",
-			"array": "cpp"
+			"array": "cpp",
+			"iosfwd": "cpp",
+			"iostream": "cpp",
+			"tuple": "cpp"
 		}
 	}
 }

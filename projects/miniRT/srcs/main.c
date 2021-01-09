@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 19:53:51 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/09 10:30:02 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/09 21:38:29 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,7 @@ int		main(void)
 	init_img(&img, mlx, mlx_win);
 	init_input(mlx, mlx_win);
 
-	t_demo	s;
-	s.img = &img;
-	s.mlx = mlx;
-	s.win = mlx_win;
-
-	// for (size_t i = 0; i < 50; i++)
-		// demo(&s);
-
-	mlx_loop_hook(mlx, demo, &s);
-	mlx_loop(mlx);
+	demo(&img, mlx, mlx_win);
 
 	return (0);
 }
