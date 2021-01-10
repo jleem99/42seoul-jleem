@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+         #
+#    By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/06 14:15:34 by jleem             #+#    #+#              #
-#    Updated: 2021/01/10 18:44:13 by jleem            ###   ########.fr        #
+#    Updated: 2021/01/11 01:22:51 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC				= gcc
+CC				= clang
 ERROR_FLAGS		= -Wall -Wextra -Werror
 MLX_FLAGS		= -lbsd -lmlx -lXext -lX11
 INC_FLAGS		= -I$(INCDIR) -I$(LIBFTDIR) -I$(RAYTRACERDIR)includes
@@ -29,37 +29,35 @@ LIBFTDIR		= ../Libft/
 RAYTRACER		= $(addprefix $(RAYTRACERDIR), c-raytracer.a)
 RAYTRACERDIR	= c-raytracer/
 
-# Rules
 all				: $(NAME)
 
 $(NAME)			: $(OBJS) $(RAYTRACER) $(LIBFT)
 	$(CC) $^ $(MLXFLAGS) -o $@ $(CFLAGS) $(MLX_FLAGS) -lm
 
 $(LIBFT)		:
-	$(MAKE) -C $(LIBFTDIR) bonus
+	$(MAKE) -C $(LIBFTDIR) CC=clang CFLAGS=-O3 bonus
 
 $(RAYTRACER)	:
-	$(MAKE) -C $(RAYTRACERDIR) fclean module
+	$(MAKE) -C $(RAYTRACERDIR) module
 
-%.o				: %.c
-	$(CC) -c $^ -o $@ $(CFLAGS)
-
-# Clean
 clean			:
+	$(MAKE) -C $(RAYTRACERDIR) clean
+	$(MAKE) -C $(LIBFTDIR) clean
 	rm -f $(OBJS)
 
 fclean			: clean
+	$(MAKE) -C $(RAYTRACERDIR) fclean
+	$(MAKE) -C $(LIBFTDIR) fclean
 	rm -f $(NAME)
 
 re				: fclean all
 
-run				: re
-	rm -f $(RAYTRACERDIR)srcs/*.o
+run				: all
 	./$(NAME)
 
 test			: ERROR_FLAGS = -Wall -Wextra
 test			: CFLAGS += -O3
-# test			: CFLAGS += -g -pg
+# test			: CFLAGS += -g3 -pg
 # test			: CFLAGS += -g3
 # test			: CFLAGS += -g3 -fsanitize=address
 test			: run

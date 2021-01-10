@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_global.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
+/*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 17:55:00 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/10 18:30:40 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/11 01:23:48 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct	s_mlx_global
 	int			height;
 }				t_mlx_global;
 
-t_mlx_global	*init_mlx_global(int width, int height, char const *title);
+t_mlx_global	*init_mlx_global(int width, int height, char *title);
 void			free_mlx_global(t_mlx_global *global);
 
 #endif

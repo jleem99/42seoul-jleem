@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 14:39:19 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/10 21:08:14 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/11 00:07:31 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,45 +37,50 @@ static void		init_demo(t_mlx_global *global)
 	t_trace		*trace = global->engine->trace;
 
 	/* Setup Objects */
-	ft_array_push(scene->objects, make_sphere(make_vec3(250, 0, 0), 10, 0xffff577f));
-	ft_array_push(scene->objects, make_sphere(make_vec3(500, 50, -30), 35, 0xffff884b));
-	ft_array_push(scene->objects, make_sphere(make_vec3(150, -24, 20), 30, 0xffffc764));
+	ft_array_push(scene->objects, make_sphere(make_vec3(150, 0, -30), 70, 0xffff577f));
+	ft_array_push(scene->objects, make_sphere(make_vec3(200, 50, 30), 35, 0xffff884b));
+	ft_array_push(scene->objects, make_sphere(make_vec3(50, -24, 20), 20, 0xffffc764));
 
 	/* Setup Camera */
 	ft_array_push(scene->cameras, make_camera(
 		make_vec3(0, 0, 0),
 		make_vec3(1, 0, 0),
 		make_vec3(0, 0, 1),
-		15.f * (float)PI / 180.f,
+		50.f * (float)PI / 180.f,
 		make_vec2i(global->width, global->height)
 	));
 
 	g_img = global->img;
 }
-
+#include <time.h>
 static void		demo_loop(t_mlx_global *global)
 {
 	static int	frame_count;
-	t_engine	*engine;
+	t_engine	*engine = global->engine;
+	t_camera	*camera = scene_get_camera(engine->scene, 0);
 
-	engine = global->engine;
 	if (is_keydown('w'))
-		(scene_get_camera(engine->scene, 0))->origin.x++;
+		camera->origin.x++;
 	if (is_keydown('a'))
-		(scene_get_camera(engine->scene, 0))->origin.y++;
+		camera->origin.y++;
 	if (is_keydown('s'))
-		(scene_get_camera(engine->scene, 0))->origin.x--;
+		camera->origin.x--;
 	if (is_keydown('d'))
-		(scene_get_camera(engine->scene, 0))->origin.y--;
+		camera->origin.y--;
 	if (is_keydown('q'))
-		(scene_get_camera(engine->scene, 0))->origin.z++;
+		camera->origin.z++;
 	if (is_keydown('e'))
-		(scene_get_camera(engine->scene, 0))->origin.z--;
+		camera->origin.z--;
 
-	raytrace_with_camera(engine->trace, engine->scene->cameras->data[0], put_pixel_interface);
+	raytrace_with_camera(engine->trace, camera, put_pixel_interface);
 	mlx_put_image_to_window(global->mlx, global->win, global->img->img, 0, 0);
 
-	printf("Frame: %07d\n", ++frame_count);
+	static clock_t	last_clock;
+	static double	time_acc;
+	frame_count++;
+	time_acc += (double)(clock() - last_clock) / 1000;
+	printf("Frame: %07d | Frametime: %5.2f\n", frame_count, time_acc / frame_count);
+	last_clock = clock();
 }
 
 void			demo(t_mlx_global *global)
