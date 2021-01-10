@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   demo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
+/*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 14:39:19 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/10 18:42:47 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/10 21:08:14 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,17 @@ static void		demo_loop(t_mlx_global *global)
 
 	engine = global->engine;
 	if (is_keydown('w'))
-		((t_camera *)(engine->scene->cameras->data[0]))->origin.x++;
+		(scene_get_camera(engine->scene, 0))->origin.x++;
 	if (is_keydown('a'))
-		((t_camera *)(engine->scene->cameras->data[0]))->origin.y++;
+		(scene_get_camera(engine->scene, 0))->origin.y++;
 	if (is_keydown('s'))
-		((t_camera *)(engine->scene->cameras->data[0]))->origin.x--;
+		(scene_get_camera(engine->scene, 0))->origin.x--;
 	if (is_keydown('d'))
-		((t_camera *)(engine->scene->cameras->data[0]))->origin.y--;
+		(scene_get_camera(engine->scene, 0))->origin.y--;
 	if (is_keydown('q'))
-		((t_camera *)(engine->scene->cameras->data[0]))->origin.z++;
+		(scene_get_camera(engine->scene, 0))->origin.z++;
 	if (is_keydown('e'))
-		((t_camera *)(engine->scene->cameras->data[0]))->origin.z--;
+		(scene_get_camera(engine->scene, 0))->origin.z--;
 
 	raytrace_with_camera(engine->trace, engine->scene->cameras->data[0], put_pixel_interface);
 	mlx_put_image_to_window(global->mlx, global->win, global->img->img, 0, 0);

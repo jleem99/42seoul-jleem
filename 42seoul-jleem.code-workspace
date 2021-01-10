@@ -30,7 +30,29 @@
 			"array": "cpp",
 			"iosfwd": "cpp",
 			"iostream": "cpp",
-			"tuple": "cpp"
+			"tuple": "cpp",
+			"string": "cpp",
+			"bit": "cpp",
+			"cctype": "cpp",
+			"clocale": "cpp",
+			"cmath": "cpp",
+			"cstdarg": "cpp",
+			"cstddef": "cpp",
+			"cstdint": "cpp",
+			"cstdio": "cpp",
+			"cstdlib": "cpp",
+			"cwchar": "cpp",
+			"cwctype": "cpp",
+			"deque": "cpp",
+			"unordered_map": "cpp",
+			"vector": "cpp",
+			"exception": "cpp",
+			"iterator": "cpp",
+			"memory_resource": "cpp",
+			"string_view": "cpp",
+			"system_error": "cpp",
+			"limits": "cpp",
+			"new": "cpp"
 		}
 	}
 }
