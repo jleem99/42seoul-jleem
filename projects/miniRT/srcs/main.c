@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 19:53:51 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/09 21:38:29 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/10 18:37:41 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,39 @@
 #define	WIDTH	800
 #define	HEIGHT	480
 
-
 #include "demo.h"
 #include "input.h"
+#include "mlx_global.h"
 
 #include <stdio.h>
 
+void	dummy(int a)
+{
+	printf("HEHE %d\n", a);
+}
+
+void	ft_exit()
+{
+	exit(0);
+}
+
 int		main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_img	img;
+	t_mlx_global	*global;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, WIDTH, HEIGHT, "Hello world!");
+	global = init_mlx_global(WIDTH, HEIGHT, "Raytracer - jleem");
 
-	init_img(&img, mlx, mlx_win);
-	init_input(mlx, mlx_win);
+	bind_input('w', 0, dummy);
+	bind_input('a', 0, dummy);
+	bind_input('s', 0, dummy);
+	bind_input('d', 0, dummy);
+	bind_input('q', 0, dummy);
+	bind_input('e', 0, dummy);
+	bind_input('z', 0, ft_exit);
 
-	demo(&img, mlx, mlx_win);
+	demo(global);
 
+	free_mlx_global(global);
 	return (0);
 }
 

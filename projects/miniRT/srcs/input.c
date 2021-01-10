@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 17:34:32 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/09 18:50:28 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/10 03:30:29 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int		input_manager(int keycode, int iskeydown, void (*fp)())
 	if (fp)
 	{
 		keybind->keycode = keycode;
-		keybind->iskeydown = iskeydown;
+		keybind->iskeydown = 0;
 		keybind->fp = fp;
 		ft_array_push(g_keybinds, keybind);
 	}
@@ -40,8 +40,14 @@ static int		input_manager(int keycode, int iskeydown, void (*fp)())
 	{
 		i = 0;
 		while (i < g_keybinds->size)
+		{
 			if (((t_keybind *)(g_keybinds->data[i]))->keycode == keycode)
-				((t_keybind *)(g_keybinds->data[i]))->fp();
+			{
+				((t_keybind *)(g_keybinds->data[i]))->iskeydown = iskeydown;
+				((t_keybind *)(g_keybinds->data[i]))->fp(iskeydown);
+			}
+			i++;
+		}
 	}
 	printf("[%d]keycode:%d|\n", iskeydown, keycode);
 	return (1);
@@ -83,7 +89,10 @@ int				is_keydown(int keycode)
 
 	i = 0;
 	while (i < g_keybinds->size)
+	{
 		if (((t_keybind *)(g_keybinds->data[i]))->keycode == keycode)
 			return (((t_keybind *)(g_keybinds->data[i]))->iskeydown);
+		i++;
+	}
 	return (0);
 }

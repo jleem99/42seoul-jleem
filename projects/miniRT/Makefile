@@ -6,7 +6,7 @@
 #    By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/06 14:15:34 by jleem             #+#    #+#              #
-#    Updated: 2021/01/10 03:13:59 by jleem            ###   ########.fr        #
+#    Updated: 2021/01/10 18:44:13 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,8 +58,9 @@ run				: re
 	./$(NAME)
 
 test			: ERROR_FLAGS = -Wall -Wextra
-test			: CFLAGS += -O2
+test			: CFLAGS += -O3
 # test			: CFLAGS += -g -pg
+# test			: CFLAGS += -g3
 # test			: CFLAGS += -g3 -fsanitize=address
 test			: run
 
