@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
+/*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:09:30 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/30 05:17:34 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/11 21:51:38 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*ret;
 
 	l_idx = 0;
-	r_idx = 0;
 	while (ft_strchr(set, s1[l_idx]) && s1[l_idx])
 		l_idx++;
 	r_idx = l_idx;

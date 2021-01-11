@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleem <jleem@students.42seoul.kr>          +#+  +:+       +#+        */
+/*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:09:06 by jleem             #+#    #+#             */
-/*   Updated: 2020/12/30 01:56:59 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/11 23:35:34 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memchr(void const *b, int c, size_t n)
 {
-	size_t	i;
+	size_t	i; 
 
 	i = -1;
 	while (++i < n)

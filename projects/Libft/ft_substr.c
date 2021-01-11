@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:09:31 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/11 00:39:48 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/12 00:36:31 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t			copylen;
 	char			*ret;
 
-	if (start >= slen || !s)
+	if (!s || start >= slen)
 		return (ft_strdup(""));
 	copylen = ((slen - start) > len) ? len : (slen - start);
 	if (!(ret = malloc(sizeof(*ret) * (copylen + 1))))
