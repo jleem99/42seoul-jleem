@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 14:39:19 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/11 00:07:31 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/11 14:13:05 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,15 @@ static void		demo_loop(t_mlx_global *global)
 		camera->origin.z--;
 
 	raytrace_with_camera(engine->trace, camera, put_pixel_interface);
-	mlx_put_image_to_window(global->mlx, global->win, global->img->img, 0, 0);
 
-	static clock_t	last_clock;
-	static double	time_acc;
 	frame_count++;
-	time_acc += (double)(clock() - last_clock) / 1000;
-	printf("Frame: %07d | Frametime: %5.2f\n", frame_count, time_acc / frame_count);
+	static clock_t	last_clock;
+	static double	frametime;
+	static double	frametime_acc;
+	frametime = (double)(clock() - last_clock) / 1000;
+	frametime_acc += frametime;
+	mlx_put_image_to_window(global->mlx, global->win, global->img->img, 0, 0);
+	printf("Frame: %07d | Frametime: %5.2f | Frametime(avg): %5.2f\n", frame_count, frametime, frametime_acc / frame_count);
 	last_clock = clock();
 }
 
