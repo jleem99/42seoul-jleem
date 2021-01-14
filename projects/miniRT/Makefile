@@ -6,15 +6,15 @@
 #    By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/06 14:15:34 by jleem             #+#    #+#              #
-#    Updated: 2021/01/11 01:22:51 by jleem            ###   ########.fr        #
+#    Updated: 2021/01/14 11:57:43 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				= clang
-ERROR_FLAGS		= -Wall -Wextra -Werror
+WFLAGS			= -Wall -Wextra -Werror
 MLX_FLAGS		= -lbsd -lmlx -lXext -lX11
 INC_FLAGS		= -I$(INCDIR) -I$(LIBFTDIR) -I$(RAYTRACERDIR)includes
-CFLAGS			= $(ERROR_FLAGS) $(INC_FLAGS)
+CFLAGS			= $(WFLAGS) $(INC_FLAGS)
 
 NAME			= miniRT
 SRCDIR			= srcs/
@@ -35,10 +35,10 @@ $(NAME)			: $(OBJS) $(RAYTRACER) $(LIBFT)
 	$(CC) $^ $(MLXFLAGS) -o $@ $(CFLAGS) $(MLX_FLAGS) -lm
 
 $(LIBFT)		:
-	$(MAKE) -C $(LIBFTDIR) CC=clang CFLAGS=-O3 bonus
+	$(MAKE) -C $(LIBFTDIR)		CC='$(CC)' CFLAGS='$(CFLAGS)'	bonus
 
 $(RAYTRACER)	:
-	$(MAKE) -C $(RAYTRACERDIR) module
+	$(MAKE) -C $(RAYTRACERDIR)	CC='$(CC)' CFLAGS='$(CFLAGS)'	module
 
 clean			:
 	$(MAKE) -C $(RAYTRACERDIR) clean
@@ -52,20 +52,24 @@ fclean			: clean
 
 re				: fclean all
 
+run				: WFLAGS = -Wall -Wextra
 run				: all
 	./$(NAME)
 
-test			: ERROR_FLAGS = -Wall -Wextra
 test			: CFLAGS += -O3
-# test			: CFLAGS += -g3 -pg
-# test			: CFLAGS += -g3
-# test			: CFLAGS += -g3 -fsanitize=address
 test			: run
 
-prof			: test
+debug			: CFLAGS += -g3
+debug			: fclean run
+
+sanitize		: CFLAGS += -g3 -fsanitize=address
+sanitize		: fclean run
+
+prof			: CFLAGS += -g3 -pg
+prof			: fclean run
 	gprof ./$(NAME)
 
-.PHONY			: all clean fclean re test $(LIBFT) $(RAYTRACER) prof
+.PHONY			: all clean fclean re $(LIBFT) $(RAYTRACER) test debug sanitize prof
 
 # %.o: %.c
 #     $(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
