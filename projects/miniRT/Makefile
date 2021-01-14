@@ -6,7 +6,7 @@
 #    By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/06 14:15:34 by jleem             #+#    #+#              #
-#    Updated: 2021/01/14 11:57:43 by jleem            ###   ########.fr        #
+#    Updated: 2021/01/14 20:45:33 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ debug			: fclean run
 sanitize		: CFLAGS += -g3 -fsanitize=address
 sanitize		: fclean run
 
-prof			: CFLAGS += -g3 -pg
+prof			: CFLAGS += -O3 -pg
 prof			: fclean run
 	gprof ./$(NAME)
 

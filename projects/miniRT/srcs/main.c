@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 19:53:51 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/11 01:54:44 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/14 18:30:53 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include "img.h"
 #include "colors.h"
 
-#define	WIDTH	400
-#define	HEIGHT	240
+#define	WIDTH	738
+#define	HEIGHT	648
 // #define	WIDTH	800
 // #define	HEIGHT	480
 
