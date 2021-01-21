@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:09:18 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/12 00:40:37 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/22 02:17:28 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static int	ft_count_strs(char const *s, char c)
 	int	str_num;
 
 	str_num = 0;
-	while (*s == c)
-		s++;
 	while (*s != '\0')
 	{
 		while (*s == c)
@@ -41,6 +39,17 @@ static int	ft_count_strs(char const *s, char c)
 	return (str_num);
 }
 
+static void	*ft_split_free(char **buf, int str_idx)
+{
+	int i;
+
+	i = 0;
+	while (i < str_idx)
+		free(buf[str_idx]);
+	free(buf);
+	return (NULL);
+}
+
 char		**ft_split(char const *s, char c)
 {
 	char			**ret;
@@ -49,23 +58,23 @@ char		**ft_split(char const *s, char c)
 	int				str_idx;
 
 	if (!(ret = malloc(sizeof(*ret) * (str_num + 1))))
-		return ((char **)0);
+		return (NULL);
 	str_idx = 0;
 	while (str_idx < str_num)
 	{
 		while (*s == c)
 			s++;
 		if (*s != '\0')
-			ret[str_idx] = malloc(ft_strlen_chr(s, c) + 1);
+			if (!(ret[str_idx] = malloc(ft_strlen_chr(s, c) + 1)))
+				return (ft_split_free(ret, str_idx));
 		s_start = s;
 		while (*s != '\0' && *s != c)
 		{
 			ret[str_idx][s - s_start] = *s;
 			s++;
 		}
-		ret[str_idx][s - s_start] = '\0';
-		str_idx++;
+		ret[str_idx++][s - s_start] = '\0';
 	}
-	ret[str_idx] = (char *)0;
+	ret[str_idx] = NULL;
 	return (ret);
 }
