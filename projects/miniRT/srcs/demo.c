@@ -6,12 +6,11 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 14:39:19 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/15 04:03:56 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/17 23:31:33 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "demo.h"
-
 
 #ifndef PI
 # define PI 3.14159265358979323846
@@ -48,7 +47,7 @@ static void		init_demo(t_mlx_global *global)
 		make_vec3(0, 0, 0),
 		make_vec3(1, 0, 0),
 		make_vec3(0, 0, 1),
-		50.f * (float)PI / 180.f,
+		70.f * (float)PI / 180.f,
 		make_vec2i(global->width, global->height)
 	));
 

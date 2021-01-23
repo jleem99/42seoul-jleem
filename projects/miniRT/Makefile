@@ -6,7 +6,7 @@
 #    By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/06 14:15:34 by jleem             #+#    #+#              #
-#    Updated: 2021/01/14 20:45:33 by jleem            ###   ########.fr        #
+#    Updated: 2021/01/20 01:33:57 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ run				: WFLAGS = -Wall -Wextra
 run				: all
 	./$(NAME)
 
-test			: CFLAGS += -O3
+test			: CFLAGS += -Ofast
 test			: run
 
 debug			: CFLAGS += -g3
