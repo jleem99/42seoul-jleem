@@ -6,11 +6,12 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 14:39:19 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/24 22:19:34 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/25 01:38:40 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "demo.h"
+#include <mlx.h>
 
 #ifndef PI
 # define PI 3.14159265358979323846
@@ -52,7 +53,10 @@ static void		demo_loop(t_mlx_global *global)
 		put_pixel_interface
 	);
 
+	demo_handle_mouse(global);
 	demo_count_frame(global);
+
+	mlx_put_image_to_window(global->mlx, global->win, global->img->img, 0, 0);
 }
 
 void			demo(t_mlx_global *global)
