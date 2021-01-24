@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 19:53:51 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/17 22:03:34 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/24 22:03:37 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ void	dummy(int a)
 	printf("HEHE %d\n", a);
 }
 
+t_mlx_global *g_global;
+
 void	ft_exit()
 {
-	exit(0);
+	mlx_loop_end(g_global->mlx);
 }
 
 int		main(void)
 {
-	t_mlx_global	*global;
-
-	global = init_mlx_global(WIDTH, HEIGHT, "Raytracer - jleem");
+	g_global = init_mlx_global(WIDTH, HEIGHT, "Raytracer - jleem");
 
 	bind_input('w', 0, dummy);
 	bind_input('a', 0, dummy);
@@ -51,9 +51,8 @@ int		main(void)
 	bind_input('e', 0, dummy);
 	bind_input('z', 0, ft_exit);
 
-	demo(global);
-
-	free_mlx_global(global);
+	demo(g_global);
+	free_mlx_global(g_global);
 	return (0);
 }
 

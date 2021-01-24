@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 14:39:19 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/17 23:31:33 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/24 22:07:38 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void		init_demo(t_mlx_global *global)
 #include <time.h>
 static void		demo_loop(t_mlx_global *global)
 {
-	static int	frame_count;
 	t_engine	*engine = global->engine;
 	t_camera	*camera = scene_get_camera(engine->scene, 0);
 
@@ -75,10 +74,11 @@ static void		demo_loop(t_mlx_global *global)
 
 	raytrace_with_camera(engine->trace, camera, put_pixel_interface);
 
-	frame_count++;
+	static int	frame_count;
 	static clock_t	last_clock;
 	static double	frametime;
 	static double	frametime_acc;
+	frame_count++;
 	frametime = (double)(clock() - last_clock) / 1000;
 	frametime_acc += frametime;
 	mlx_put_image_to_window(global->mlx, global->win, global->img->img, 0, 0);
@@ -93,4 +93,5 @@ void			demo(t_mlx_global *global)
 
 	mlx_loop_hook(global->mlx, demo_loop, global);
 	mlx_loop(global->mlx);
+	free_engine(global->engine);
 }
