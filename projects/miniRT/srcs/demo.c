@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 14:39:19 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/24 22:07:38 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/24 22:19:34 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,8 @@
 #endif
 
 #include <math.h>
-#include "colors.h"
-#include "mlx_global.h"
 #include "engine.h"
 
-t_img			*g_img;
-
-void			put_pixel_interface(int x, int y, int color)
-{
-	img_put_pixel(g_img, x, y, color);
-}
-
-#include <stdio.h>
 static void		init_demo(t_mlx_global *global)
 {
 	/* Setup Engine */
@@ -50,40 +40,19 @@ static void		init_demo(t_mlx_global *global)
 		70.f * (float)PI / 180.f,
 		make_vec2i(global->width, global->height)
 	));
-
-	g_img = global->img;
 }
-#include <time.h>
+
 static void		demo_loop(t_mlx_global *global)
 {
-	t_engine	*engine = global->engine;
-	t_camera	*camera = scene_get_camera(engine->scene, 0);
+	demo_handle_input(global);
 
-	if (is_keydown('w'))
-		camera->origin.x++;
-	if (is_keydown('a'))
-		camera->origin.y--;
-	if (is_keydown('s'))
-		camera->origin.x--;
-	if (is_keydown('d'))
-		camera->origin.y++;
-	if (is_keydown('q'))
-		camera->origin.z--;
-	if (is_keydown('e'))
-		camera->origin.z++;
+	raytrace_with_camera(
+		global->engine->trace,
+		scene_get_camera(global->engine->scene, 0),
+		put_pixel_interface
+	);
 
-	raytrace_with_camera(engine->trace, camera, put_pixel_interface);
-
-	static int	frame_count;
-	static clock_t	last_clock;
-	static double	frametime;
-	static double	frametime_acc;
-	frame_count++;
-	frametime = (double)(clock() - last_clock) / 1000;
-	frametime_acc += frametime;
-	mlx_put_image_to_window(global->mlx, global->win, global->img->img, 0, 0);
-	printf("Frame: %07d | Frametime: %5.2f | Frametime(avg): %5.2f\n", frame_count, frametime, frametime_acc / frame_count);
-	last_clock = clock();
+	demo_count_frame(global);
 }
 
 void			demo(t_mlx_global *global)

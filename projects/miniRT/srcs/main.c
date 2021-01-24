@@ -6,33 +6,24 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 19:53:51 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/24 22:03:37 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/24 22:24:31 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
-#include "libft.h"
-
 #include "img.h"
-#include "colors.h"
+#include "demo.h"
+#include "input.h"
 
 #define	WIDTH	500
 #define	HEIGHT	500
-// #define	WIDTH	800
-// #define	HEIGHT	480
 
-#include "demo.h"
-#include "input.h"
-#include "mlx_global.h"
-
-#include <stdio.h>
+t_mlx_global *g_global;
 
 void	dummy(int a)
 {
 	printf("HEHE %d\n", a);
 }
-
-t_mlx_global *g_global;
 
 void	ft_exit()
 {
