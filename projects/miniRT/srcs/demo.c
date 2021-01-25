@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 14:39:19 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/25 01:38:40 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/25 20:39:26 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void		init_demo(t_mlx_global *global)
 	ft_array_push(scene->objects, make_sphere(make_vec3(200, 50, -30), 35, 0xffff884b));
 	ft_array_push(scene->objects, make_sphere(make_vec3(50, -24, -20), 20, 0xffffc764));
 
-	ft_array_push(scene->objects, make_plane(make_vec3(0, 0, -40), make_vec3(0, 0, 1), 0xffccc764));
+	// ft_array_push(scene->objects, make_plane(make_vec3(0, 0, -40), make_vec3(0, 0, 1), 0xffccc764));
 
 	/* Setup Camera */
 	ft_array_push(scene->cameras, make_camera(
