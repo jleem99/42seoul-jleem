@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 14:39:19 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/27 00:35:31 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/27 02:41:55 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void		demo_loop(t_mlx_global *global)
 
 void			demo(t_mlx_global *global)
 {
-	global->engine = init_engine(8);
+	global->engine = init_engine(162);
 	global->engine->put_pixel = put_pixel_interface;
 	init_demo(global);
 

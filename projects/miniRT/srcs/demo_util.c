@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 22:10:52 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/27 00:22:51 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/27 02:37:38 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 #include <mlx.h>
 #include <stdlib.h>
-#include <time.h>
 
 extern t_mlx_global	*g_global;
 double				g_frametime;
@@ -79,20 +78,30 @@ void				demo_handle_input(t_mlx_global *global)
 	mlx_do_sync(global->mlx);
 }
 
+#include <sys/time.h>
+typedef struct timeval timeval_t;
 void				demo_count_frame(t_mlx_global *global)
 {
-	static int		frame_count;
-	static clock_t	last_clock;
-	static double	frametime;
-	static double	frametime_acc;
+	static int			frame_count;
+	timeval_t			time;
+	static timeval_t	time_last;
+	static double		frametime;
+	static double		frametime_acc;
 
+	if (time_last.tv_sec == 0)
+	{
+		gettimeofday(&time_last, NULL);
+		return ;
+	}
 	frame_count++;
-	frametime = (double)(clock() - last_clock) / 1000;
+	gettimeofday(&time, NULL);
+	frametime = (time.tv_sec - time_last.tv_sec) * 1e3 + (time.tv_usec - time_last.tv_usec) * 1e-3;
 	frametime_acc += frametime;
 	printf(
 		"Frame: %07d | Frametime: %5.2f | Frametime(avg): %5.2f\n",
 		frame_count, frametime, frametime_acc / frame_count
 	);
 	g_frametime = frametime;
-	last_clock = clock();
+
+	gettimeofday(&time_last, NULL);
 }
