@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 22:10:52 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/25 20:29:58 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/26 18:42:20 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,11 @@ void				put_pixel_interface(int x, int y, int color)
 	img_put_pixel(g_global->img, x, y, color);
 }
 
-void				demo_handle_input(t_mlx_global *global)
+static void			demo_handle_keyboard(t_mlx_global *global)
 {
 	t_camera		*camera = scene_get_camera(global->engine->scene, 0);
 	float const		k = g_frametime * 0.1f;
-	vec3_print(camera->forward);
-	vec3_print(camera->right);
-	vec3_print(camera->up);
+
 	if (is_keydown('w'))
 		camera->origin = vec3_add(camera->origin, vec3_multiply(camera->forward, k));
 	if (is_keydown('d'))
@@ -44,8 +42,8 @@ void				demo_handle_input(t_mlx_global *global)
 	if (is_keydown('q'))
 		camera->origin = vec3_subtract(camera->origin, vec3_multiply(camera->up, k));
 }
-#include "math.h"
-void				demo_handle_mouse(t_mlx_global *global)
+
+static void			demo_handle_mouse(t_mlx_global *global)
 {
 	int		dx;
 	int		dy;
@@ -70,6 +68,12 @@ void				demo_handle_mouse(t_mlx_global *global)
 	*camera = new_camera;
 
 	mlx_mouse_move(global->mlx, global->win, global->width / 2, global->height / 2);
+}
+
+void				demo_handle_input(t_mlx_global *global)
+{
+	demo_handle_keyboard(global);
+	demo_handle_mouse(global);
 }
 
 void				demo_count_frame(t_mlx_global *global)
