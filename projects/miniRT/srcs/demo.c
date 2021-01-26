@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 14:39:19 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/26 21:12:15 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/27 00:35:31 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@
 
 static void		init_demo(t_mlx_global *global)
 {
-	/* Setup Engine */
-	t_scene		*scene = global->engine->scene;
-	t_trace		*trace = global->engine->trace;
+	t_scene const	*scene = global->engine->scene;
 
 	/* Setup Objects */
 	ft_array_push(scene->objects, make_sphere(make_vec3(150, 0, 30), 70, 0xffff577f));
@@ -38,7 +36,7 @@ static void		init_demo(t_mlx_global *global)
 		make_vec3(0, 0, 0),
 		make_vec3(1, 0, 0),
 		make_vec3(0, 0, 1),
-		70.f * (float)PI / 180.f,
+		60.f * (float)PI / 180.f,
 		make_vec2i(global->width, global->height)
 	));
 }
@@ -47,11 +45,7 @@ static void		demo_loop(t_mlx_global *global)
 {
 	demo_handle_input(global);
 
-	raytrace_with_camera(
-		global->engine->trace,
-		scene_get_camera(global->engine->scene, 0),
-		put_pixel_interface
-	);
+	raytrace_frame(global->engine);
 
 	mlx_put_image_to_window(global->mlx, global->win, global->img->img, 0, 0);
 
@@ -60,7 +54,8 @@ static void		demo_loop(t_mlx_global *global)
 
 void			demo(t_mlx_global *global)
 {
-	global->engine = init_engine();
+	global->engine = init_engine(8);
+	global->engine->put_pixel = put_pixel_interface;
 	init_demo(global);
 
 	mlx_loop_hook(global->mlx, demo_loop, global);

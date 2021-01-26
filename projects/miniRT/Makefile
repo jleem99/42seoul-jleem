@@ -6,7 +6,7 @@
 #    By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/06 14:15:34 by jleem             #+#    #+#              #
-#    Updated: 2021/01/26 21:15:27 by jleem            ###   ########.fr        #
+#    Updated: 2021/01/27 00:29:13 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC				= clang
 WFLAGS			= -Wall -Wextra -Werror
 MLX_FLAGS		= -lmlx -lXext -lX11
 INC_FLAGS		= -I$(INCDIR) -I$(LIBFTDIR) -I$(RAYTRACERDIR)includes
-CFLAGS			= $(WFLAGS) $(INC_FLAGS)
+CFLAGS			= $(WFLAGS) $(INC_FLAGS) -lpthread
 
 NAME			= miniRT
 SRCDIR			= srcs/
