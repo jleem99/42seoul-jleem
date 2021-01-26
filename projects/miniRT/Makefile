@@ -6,13 +6,13 @@
 #    By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/06 14:15:34 by jleem             #+#    #+#              #
-#    Updated: 2021/01/20 01:33:57 by jleem            ###   ########.fr        #
+#    Updated: 2021/01/26 21:15:27 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				= clang
 WFLAGS			= -Wall -Wextra -Werror
-MLX_FLAGS		= -lbsd -lmlx -lXext -lX11
+MLX_FLAGS		= -lmlx -lXext -lX11
 INC_FLAGS		= -I$(INCDIR) -I$(LIBFTDIR) -I$(RAYTRACERDIR)includes
 CFLAGS			= $(WFLAGS) $(INC_FLAGS)
 

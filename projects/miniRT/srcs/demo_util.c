@@ -6,15 +6,17 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 22:10:52 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/26 18:42:20 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/26 21:30:29 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "demo.h"
+#include "input.h"
+#include "euler.h"
+
 #include <mlx.h>
 #include <stdlib.h>
 #include <time.h>
-#include "euler.h"
 
 extern t_mlx_global	*g_global;
 double				g_frametime;
@@ -74,6 +76,7 @@ void				demo_handle_input(t_mlx_global *global)
 {
 	demo_handle_keyboard(global);
 	demo_handle_mouse(global);
+	mlx_do_sync(global->mlx);
 }
 
 void				demo_count_frame(t_mlx_global *global)

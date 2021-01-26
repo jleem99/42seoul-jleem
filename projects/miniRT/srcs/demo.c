@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 14:39:19 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/26 18:57:18 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/26 21:12:15 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static void		init_demo(t_mlx_global *global)
 
 static void		demo_loop(t_mlx_global *global)
 {
+	demo_handle_input(global);
+
 	raytrace_with_camera(
 		global->engine->trace,
 		scene_get_camera(global->engine->scene, 0),
@@ -53,7 +55,6 @@ static void		demo_loop(t_mlx_global *global)
 
 	mlx_put_image_to_window(global->mlx, global->win, global->img->img, 0, 0);
 
-	demo_handle_input(global);
 	demo_count_frame(global);
 }
 
