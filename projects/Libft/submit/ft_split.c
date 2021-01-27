@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 00:09:18 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/22 02:17:28 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/28 07:52:03 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ static void	*ft_split_free(char **buf, int str_idx)
 
 char		**ft_split(char const *s, char c)
 {
-	char			**ret;
-	char	const	*s_start;
-	int		const	str_num = ft_count_strs(s, c);
-	int				str_idx;
+	char		**ret;
+	int const	str_num = ft_count_strs(s, c);
+	int			str_idx;
+	int			word_idx;
 
 	if (!(ret = malloc(sizeof(*ret) * (str_num + 1))))
 		return (NULL);
@@ -64,16 +64,12 @@ char		**ft_split(char const *s, char c)
 	{
 		while (*s == c)
 			s++;
-		if (*s != '\0')
-			if (!(ret[str_idx] = malloc(ft_strlen_chr(s, c) + 1)))
-				return (ft_split_free(ret, str_idx));
-		s_start = s;
+		if (!(ret[str_idx] = malloc(ft_strlen_chr(s, c) + 1)))
+			return (ft_split_free(ret, str_idx));
+		word_idx = 0;
 		while (*s != '\0' && *s != c)
-		{
-			ret[str_idx][s - s_start] = *s;
-			s++;
-		}
-		ret[str_idx++][s - s_start] = '\0';
+			ret[str_idx][word_idx++] = *(s++);
+		ret[str_idx++][word_idx] = '\0';
 	}
 	ret[str_idx] = NULL;
 	return (ret);
