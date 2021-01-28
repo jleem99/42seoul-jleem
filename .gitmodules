@@ -4,15 +4,6 @@
 [submodule "report-wiki"]
 	path = report-wiki
 	url = gits@git.innovationacademy.kr:jleem/report.wiki.git
-[submodule "projects/Libft/libft-war-machine"]
-	path = projects/Libft/libft-war-machine
-	url = https://github.com/ska42/libft-war-machine.git
-[submodule "projects/Libft/libft-unit-test"]
-	path = projects/Libft/libft-unit-test
-	url = https://github.com/alelievr/libft-unit-test.git
-[submodule "projects/Libft/Libftest"]
-	path = projects/Libft/Libftest
-	url = https://github.com/jtoty/Libftest.git
 [submodule "42seoul-docs"]
 	path = 42seoul-docs
 	url = git@github.com:kch79624/42seoul-docs.git
@@ -25,3 +16,6 @@
 [submodule "projects/miniRT/raytracing_in_one_weekend"]
 	path = projects/miniRT/raytracing_in_one_weekend
 	url = git@github.com:kch79624/raytracing_in_one_weekend.git
+[submodule "projects/Libft"]
+	path = projects/Libft
+	url = git@github.com:kch79624/42seoul-Libft.git
