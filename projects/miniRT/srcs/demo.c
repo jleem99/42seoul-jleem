@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 14:39:19 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/27 02:41:55 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/29 01:03:31 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ static void		init_demo(t_mlx_global *global)
 	t_scene const	*scene = global->engine->scene;
 
 	/* Setup Objects */
-	ft_array_push(scene->objects, make_sphere(make_vec3(150, 0, 30), 70, 0xffff577f));
-	ft_array_push(scene->objects, make_sphere(make_vec3(200, 50, -30), 35, 0xffff884b));
-	ft_array_push(scene->objects, make_sphere(make_vec3(50, -24, -20), 20, 0xffffc764));
+	ft_array_push(scene->objects, make_sphere(vec3(150, 0, 30), 70, 0xffff577f));
+	ft_array_push(scene->objects, make_sphere(vec3(200, 50, -30), 35, 0xffff884b));
+	ft_array_push(scene->objects, make_sphere(vec3(50, -24, -20), 20, 0xffffc764));
 
-	// ft_array_push(scene->objects, make_plane(make_vec3(0, 0, -40), make_vec3(0, 0, 1), 0xffccc764));
+	// ft_array_push(scene->objects, make_plane(vec3(0, 0, -40), vec3(0, 0, 1), 0xffccc764));
 
 	/* Setup Camera */
 	ft_array_push(scene->cameras, make_camera(
-		make_vec3(0, 0, 0),
-		make_vec3(1, 0, 0),
-		make_vec3(0, 0, 1),
+		vec3(0, 0, 0),
+		vec3(1, 0, 0),
+		vec3(0, 0, 1),
 		60.f * (float)PI / 180.f,
-		make_vec2i(global->width, global->height)
+		vec2i(global->width, global->height)
 	));
 }
 
@@ -54,7 +54,7 @@ static void		demo_loop(t_mlx_global *global)
 
 void			demo(t_mlx_global *global)
 {
-	global->engine = init_engine(162);
+	global->engine = init_engine(20);
 	global->engine->put_pixel = put_pixel_interface;
 	init_demo(global);
 

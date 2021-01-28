@@ -6,7 +6,7 @@
 /*   By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 22:10:52 by jleem             #+#    #+#             */
-/*   Updated: 2021/01/27 02:37:38 by jleem            ###   ########.fr       */
+/*   Updated: 2021/01/29 00:56:53 by jleem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,17 @@ static void			demo_handle_keyboard(t_mlx_global *global)
 	float const		k = g_frametime * 0.1f;
 
 	if (is_keydown('w'))
-		camera->origin = vec3_add(camera->origin, vec3_multiply(camera->forward, k));
+		camera->origin = vec3_add(camera->origin, vec3_mul(camera->forward, k));
 	if (is_keydown('d'))
-		camera->origin = vec3_add(camera->origin, vec3_multiply(camera->right, k));
+		camera->origin = vec3_add(camera->origin, vec3_mul(camera->right, k));
 	if (is_keydown('e'))
-		camera->origin = vec3_add(camera->origin, vec3_multiply(camera->up, k));
+		camera->origin = vec3_add(camera->origin, vec3_mul(camera->up, k));
 	if (is_keydown('s'))
-		camera->origin = vec3_subtract(camera->origin, vec3_multiply(camera->forward, k));
+		camera->origin = vec3_sub(camera->origin, vec3_mul(camera->forward, k));
 	if (is_keydown('a'))
-		camera->origin = vec3_subtract(camera->origin, vec3_multiply(camera->right, k));
+		camera->origin = vec3_sub(camera->origin, vec3_mul(camera->right, k));
 	if (is_keydown('q'))
-		camera->origin = vec3_subtract(camera->origin, vec3_multiply(camera->up, k));
+		camera->origin = vec3_sub(camera->origin, vec3_mul(camera->up, k));
 }
 
 static void			demo_handle_mouse(t_mlx_global *global)
@@ -56,7 +56,7 @@ static void			demo_handle_mouse(t_mlx_global *global)
 
 	t_camera	**camera = &global->engine->scene->cameras->data[0];
 	t_camera	*new_camera;
-	t_vec3		d = vec3_normalize((*camera)->forward);
+	t_vec3		d = vec3_norm((*camera)->forward);
 
 	new_camera = make_camera(
 		(*camera)->origin,
