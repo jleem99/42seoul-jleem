@@ -22,3 +22,6 @@
 [submodule "projects/get_next_line"]
 	path = projects/get_next_line
 	url = git@github.com:kch79624/42seoul-get_next_line.git
+[submodule "projects/ft_printf"]
+	path = projects/ft_printf
+	url = git@github.com:kch79624/42seoul-ft_printf.git
