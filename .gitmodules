@@ -19,3 +19,6 @@
 [submodule "projects/Libft"]
 	path = projects/Libft
 	url = git@github.com:kch79624/42seoul-Libft.git
+[submodule "projects/get_next_line"]
+	path = projects/get_next_line
+	url = git@github.com:kch79624/42seoul-get_next_line.git
