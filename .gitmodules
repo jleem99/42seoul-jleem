@@ -25,3 +25,6 @@
 [submodule "projects/ft_printf"]
 	path = projects/ft_printf
 	url = git@github.com:kch79624/42seoul-ft_printf.git
+[submodule "projects/miniRT/ppm-viewer"]
+	path = projects/miniRT/ppm-viewer
+	url = git@github.com:kch79624/ppm-viewer.git
