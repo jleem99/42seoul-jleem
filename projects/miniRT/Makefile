@@ -6,7 +6,7 @@
 #    By: jleem <jleem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/06 14:15:34 by jleem             #+#    #+#              #
-#    Updated: 2021/01/27 00:29:13 by jleem            ###   ########.fr        #
+#    Updated: 2021/01/29 03:27:24 by jleem            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ RAYTRACERDIR	= c-raytracer/
 all				: $(NAME)
 
 $(NAME)			: $(OBJS) $(RAYTRACER) $(LIBFT)
-	$(CC) $^ $(MLXFLAGS) -o $@ $(CFLAGS) $(MLX_FLAGS) -lm
+	$(CC) $^ -o $@ $(CFLAGS) $(MLX_FLAGS) -lm
 
 $(LIBFT)		:
 	$(MAKE) -C $(LIBFTDIR)		CC='$(CC)' CFLAGS='$(CFLAGS)'	bonus
@@ -57,6 +57,10 @@ run				: all
 	./$(NAME)
 
 test			: CFLAGS += -Ofast
+# test			: CFLAGS += -march=native
+# test			: CFLAGS += -fno-signed-zeros -fno-trapping-math -frename-registers -funroll-loops
+# generate		: CFLAGS += -fprofile-generate
+# use				: CFLAGS += -fprofile-use -fprofile-correction
 test			: run
 
 debug			: CFLAGS += -g3
