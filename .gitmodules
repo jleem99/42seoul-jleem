@@ -7,15 +7,6 @@
 [submodule "42seoul-docs"]
 	path = 42seoul-docs
 	url = git@github.com:kch79624/42seoul-docs.git
-[submodule "projects/miniRT/minilibx-linux"]
-	path = projects/miniRT/minilibx-linux
-	url = https://github.com/42Paris/minilibx-linux.git
-[submodule "projects/miniRT/c-raytracer"]
-	path = projects/miniRT/c-raytracer
-	url = git@github.com:kch79624/c-raytracer.git
-[submodule "projects/miniRT/raytracing_in_one_weekend"]
-	path = projects/miniRT/raytracing_in_one_weekend
-	url = git@github.com:kch79624/raytracing_in_one_weekend.git
 [submodule "projects/Libft"]
 	path = projects/Libft
 	url = git@github.com:kch79624/42seoul-Libft.git
@@ -25,6 +16,6 @@
 [submodule "projects/ft_printf"]
 	path = projects/ft_printf
 	url = git@github.com:kch79624/42seoul-ft_printf.git
-[submodule "projects/miniRT/ppm-viewer"]
-	path = projects/miniRT/ppm-viewer
-	url = git@github.com:kch79624/ppm-viewer.git
+[submodule "projects/miniRT"]
+	path = projects/miniRT
+	url = git@github.com:kch79624/42seoul-miniRT.git
