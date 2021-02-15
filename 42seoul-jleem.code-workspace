@@ -2,9 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "../c-piscine-projects"
 		}
 	],
 	"settings": {
@@ -52,7 +49,25 @@
 			"string_view": "cpp",
 			"system_error": "cpp",
 			"limits": "cpp",
-			"new": "cpp"
+			"new": "cpp",
+			"cinttypes": "cpp",
+			"thread.h": "c",
+			"pthread.h": "c",
+			"hittable_list.h": "c",
+			"hittable.h": "c",
+			"ray.h": "c",
+			"vec3.h": "c",
+			"chrono": "c",
+			"ctime": "c",
+			"ratio": "c",
+			"thread": "c",
+			"get_next_line.h": "c",
+			"limits.h": "c",
+			"img.h": "c",
+			"demo.h": "c",
+			"input.h": "c",
+			"parse_scene.h": "c",
+			"libft_bonus.h": "c"
 		}
 	}
 }
