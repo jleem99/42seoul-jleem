@@ -19,9 +19,9 @@
 [submodule "projects/miniRT"]
 	path = projects/miniRT
 	url = git@github.com:kch79624/42seoul-miniRT.git
-[submodule "projects/so_long"]
-	path = projects/so_long
-	url = git@github.com:kch79624/42seoul-so_long.git
 [submodule "projects/push_swap"]
 	path = projects/push_swap
 	url = git@github.com:kch79624/42seoul-push_swap.git
+[submodule "projects/so_long"]
+	path = projects/so_long
+	url = git@github.com:kch79624/42seoul-so_long.git
