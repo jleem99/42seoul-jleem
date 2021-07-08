@@ -25,3 +25,6 @@
 [submodule "projects/so_long"]
 	path = projects/so_long
 	url = git@github.com:kch79624/42seoul-so_long.git
+[submodule "projects/minitalk"]
+	path = projects/minitalk
+	url = git@github.com:kch79624/42seoul-minitalk.git
