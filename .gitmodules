@@ -28,3 +28,6 @@
 [submodule "projects/minitalk"]
 	path = projects/minitalk
 	url = git@github.com:kch79624/42seoul-minitalk.git
+[submodule "projects/pipex"]
+	path = projects/pipex
+	url = git@github.com:jleem99/42seoul-pipex.git
